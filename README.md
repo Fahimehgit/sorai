@@ -29,7 +29,8 @@ The CSV needs a `prob_polyploid` column. The result is the forest probability, t
 From tokenized locus alignments and the locus CNN checkpoints:
 
 ```bash
-sorai predict --loci-dir sample_loci/ --cnn-dir /path/to/cnn_checkpoints
+hf download Fahimehr140/sorai --local-dir sorai-cnns
+sorai predict --loci-dir sample_loci/ --cnn-dir sorai-cnns/checkpoints
 ```
 
 Each file in `sample_loci/` is named `L<probe_id>.json` and contains `reference_tokens` and `auxiliary_tokens` (integers: A=1, C=2, G=3, T=4, gap or other=0). Sequences are truncated or padded to 154 positions. Up to 350 reads are kept, and missing rows are padded, giving the 351 × 154 input used in training. `models/probe_index_to_id.csv` maps each GoFlag locus id to the checkpoint `best_model_probe_3_<index>.pt`.
@@ -44,7 +45,7 @@ The random forest is included:
 - `sorai/models/rf/feature_columns.json`
 - `sorai/models/rf/model_metadata.json`
 
-The 384 locus CNN checkpoints are about 6.8 GB and are not stored in git. Put `best_model_probe_3_<index>.pt` in one directory and pass it as `--cnn-dir`. A Hugging Face download for those checkpoints will be added to this page when the files are published.
+The 384 locus CNN checkpoints (6.8 GB) are on Hugging Face: [Fahimehr140/sorai](https://huggingface.co/Fahimehr140/sorai). They are not stored in git. `probe_index_to_id.csv` in that repository maps each checkpoint to a GoFlag locus id.
 
 ## Citation
 
