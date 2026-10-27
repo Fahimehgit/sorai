@@ -1,0 +1,23 @@
+[
+  "n_models",
+  "mean_prob",
+  "median_prob",
+  "vote_fraction",
+  "logit_mean_prob",
+  "confidence_weighted_prob",
+  "adaptive_top_conf_mean",
+  "trimmed_conf_mean_70pct",
+  "std_prob",
+  "min_prob",
+  "max_prob",
+  "q10_prob",
+  "q25_prob",
+  "q75_prob",
+  "q90_prob",
+  "iqr_prob",
+  "frac_uncertain_045_055",
+  "frac_high_07",
+  "frac_low_03",
+  "mean_abs_centered",
+  "entropy_mean"
+]

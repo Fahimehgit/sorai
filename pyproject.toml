@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sorai"
+version = "0.1.0"
+description = "sorAI: machine learning models to predict plant polyploidy from target capture data"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Fahimeh Rahimi" },
+  { name = "Jessie A. Pelosi" },
+  { name = "J. Gordon Burleigh" },
+  { name = "Juannan Zhou" },
+]
+keywords = ["sorAI", "sorai", "polyploidy", "ploidy", "ferns", "target-capture", "machine-learning"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "scikit-learn==1.6.1",
+  "torch",
+]
+
+[project.scripts]
+sorai = "sorai.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sorai*"]
+
+[tool.setuptools.package-data]
+sorai = ["models/rf/*", "models/*.csv"]

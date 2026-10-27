@@ -1,0 +1,16 @@
+{
+  "name": "sorAI",
+  "model": "random_forest",
+  "task": "diploid_versus_polyploid",
+  "organism": "ferns",
+  "probe_set": "GoFlag 408",
+  "threshold": 0.48,
+  "train_n": 516,
+  "test_n": 34,
+  "test_split": "held-out test",
+  "test_accuracy": 0.7647058823529411,
+  "test_auroc": 0.8701754385964912,
+  "n_loci": 384,
+  "n_estimators": 300,
+  "decision": "polyploid if prob_polyploid >= threshold, otherwise diploid"
+}

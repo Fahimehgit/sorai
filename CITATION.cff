@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "sorAI: machine learning prediction of plant polyploidy from target capture data"
+message: "If you use sorAI, please cite this software."
+type: software
+authors:
+  - family-names: Rahimi
+    given-names: Fahimeh
+    affiliation: "University of Florida"
+    orcid: "https://orcid.org/0009-0003-5407-4849"
+  - family-names: Pelosi
+    given-names: Jessie A.
+    affiliation: "University of Arizona"
+    orcid: "https://orcid.org/0000-0002-2861-3445"
+  - family-names: Burleigh
+    given-names: J. Gordon
+    affiliation: "University of Florida"
+  - family-names: Zhou
+    given-names: Juannan
+    affiliation: "University of Florida"
+repository-code: "https://github.com/Fahimehgit/sorai"
+license: MIT
+keywords:
+  - sorAI
+  - sorai
+  - polyploidy
+  - ploidy
+  - ferns
+  - target capture
+  - machine learning
+  - GoFlag

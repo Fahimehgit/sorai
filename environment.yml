@@ -1,0 +1,11 @@
+name: sorai
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - scikit-learn=1.6.1
+  - pytorch
+  - pip
