@@ -6,19 +6,33 @@ The model to use on a new sample is the random forest. It combines the polyploid
 
 sorAI does not estimate a chromosome number, and it does not separate triploids, tetraploids, and higher polyploids. It was trained on ferns. Applying it to other clades or probe sets without retraining is not supported.
 
-## Install
+## Access
+
+| What | Where |
+| --- | --- |
+| Code and random forest | this repository: [github.com/Fahimehgit/sorai](https://github.com/Fahimehgit/sorai) |
+| Locus CNN checkpoints (6.8 GB) | Hugging Face: [huggingface.co/Fahimehr140/sorai](https://huggingface.co/Fahimehr140/sorai) |
 
 ```bash
+# 1. Get the code (includes the random forest)
 git clone https://github.com/Fahimehgit/sorai.git
 cd sorai
 pip install -e .
+
+# 2. Get the locus CNN checkpoints (needed to score alignments)
+pip install -U "huggingface_hub[cli]"
+hf download Fahimehr140/sorai --local-dir sorai-cnns
 ```
+
+After that, the forest is in `sorai/models/rf/` and the CNN files are in `sorai-cnns/checkpoints/`.
+
+## Install notes
 
 Python 3.9 or newer. The exported forest was saved with scikit-learn 1.6.1; use that version so the file loads cleanly. A conda environment is in `environment.yml`.
 
 ## Predict
 
-From per-locus probabilities, one row per recovered locus:
+If you already have per-locus probabilities, one row per recovered locus:
 
 ```bash
 sorai predict --probabilities locus_probabilities.csv
@@ -26,10 +40,9 @@ sorai predict --probabilities locus_probabilities.csv
 
 The CSV needs a `prob_polyploid` column. The result is the forest probability, the call at threshold 0.48, and the number of loci used.
 
-From tokenized locus alignments and the locus CNN checkpoints:
+If you have tokenized locus alignments and the downloaded CNN checkpoints:
 
 ```bash
-hf download Fahimehr140/sorai --local-dir sorai-cnns
 sorai predict --loci-dir sample_loci/ --cnn-dir sorai-cnns/checkpoints
 ```
 
@@ -39,13 +52,16 @@ Loci that are missing from the sample are skipped. The forest was trained on wha
 
 ## Model weights
 
-The random forest is included:
+Included in this repository:
 
 - `sorai/models/rf/rf_model.pkl`
 - `sorai/models/rf/feature_columns.json`
 - `sorai/models/rf/model_metadata.json`
 
-The 384 locus CNN checkpoints (6.8 GB) are on Hugging Face: [Fahimehr140/sorai](https://huggingface.co/Fahimehr140/sorai). They are not stored in git. `probe_index_to_id.csv` in that repository maps each checkpoint to a GoFlag locus id.
+Downloaded separately from Hugging Face ([Fahimehr140/sorai](https://huggingface.co/Fahimehr140/sorai)):
+
+- `checkpoints/best_model_probe_3_<index>.pt` for 384 loci
+- `probe_index_to_id.csv`
 
 ## Citation
 
