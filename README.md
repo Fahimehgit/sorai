@@ -46,7 +46,7 @@ If you have tokenized locus alignments and the downloaded CNN checkpoints:
 sorai predict --loci-dir sample_loci/ --cnn-dir sorai-cnns/checkpoints
 ```
 
-Each file in `sample_loci/` is named `L<probe_id>.json` and contains `reference_tokens` and `auxiliary_tokens` (integers: A=1, C=2, G=3, T=4, gap or other=0). Sequences are truncated or padded to 154 positions. Up to 350 reads are kept, and missing rows are padded, giving the 351 × 154 input used in training. `models/probe_index_to_id.csv` maps each GoFlag locus id to the checkpoint `best_model_probe_3_<index>.pt`.
+Each file in `sample_loci/` is named `L<probe_id>.json` and contains `reference_tokens` and `auxiliary_tokens` (integers: A=1, C=2, G=3, T=4, gap or other=0). Sequences are truncated or padded to 154 positions. Up to 350 reads are kept, and missing rows are padded, giving the 351 × 154 input used in training. `sorai/models/probe_index_to_id.csv` maps each GoFlag locus id to the checkpoint `best_model_probe_3_<index>.pt`.
 
 Loci that are missing from the sample are skipped. The forest was trained on whatever loci a sample actually recovered.
 

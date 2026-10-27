@@ -40,6 +40,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Predict diploid versus polyploid with the sorAI random forest."
     )
+    parser.add_argument(
+        "command",
+        nargs="?",
+        choices=["predict"],
+        default="predict",
+        help="Command to run. Only predict is supported.",
+    )
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument(
         "--probabilities",
